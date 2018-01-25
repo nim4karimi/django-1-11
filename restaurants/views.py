@@ -1,32 +1,26 @@
 import random
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.views import View
 
-# Create your views here.
+from django.views.generic import TemplateView
 
 
-# function base view
-def home(request):
-    num = random.randint(0, 2000000)
-    some_list = [num , random.randint(0, 2000000) , num]
-    context = {
-        'bool_var': True,
-        'num': num,
-        'some_list' : some_list,
-    }
-    return render(request,'home.html', context )
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
-def contact(request):
-    context = {}
-    return render(request,'contact.html', context )
+    def get_context_data(self):
+        context = super(HomeView, self).get_context_data()
+        print(context)
+        num = random.randint(0, 2000000)
+        some_list = [num, random.randint(0, 2000000), num]
+        context = {
+            'bool_var': True,
+            'num': num,
+            'some_list': some_list,
+        }
+        return context
 
-def about(request):
-    context = {}
-    return render(request,'about.html', context )
+class AboutView(TemplateView):
+    template_name = 'about.html'
 
 
-class ContactView(View):
-    def get(self, request):
-        context = {}
-        return render(request, 'contact.html', context)
+class ContactView(TemplateView):
+    template_name = 'contact.html'
