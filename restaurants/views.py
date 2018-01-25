@@ -1,7 +1,7 @@
 import random
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from django.views import View
 
 # Create your views here.
 
@@ -17,10 +17,16 @@ def home(request):
     }
     return render(request,'home.html', context )
 
-def home2(request):
+def contact(request):
     context = {}
-    return render(request,'home2.html', context )
+    return render(request,'contact.html', context )
 
-def home3(request):
+def about(request):
     context = {}
-    return render(request,'home3.html', context )
+    return render(request,'about.html', context )
+
+
+class ContactView(View):
+    def get(self, request):
+        context = {}
+        return render(request, 'contact.html', context)
