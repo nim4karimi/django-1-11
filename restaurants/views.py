@@ -1,26 +1,25 @@
-import random
+from django.shortcuts import render
+from django.views.generic import TemplateView , ListView
+from .models import RestaurantLocation
 
-from django.views.generic import TemplateView
+def restaurant_listview(request):
+    template_name = 'restaurants/restaurants_list.html'
+    queryset = RestaurantLocation.objects.all()
+    context = {
+        "object_list" : queryset
+    }
+    return render(request, template_name, context)
 
-
-class HomeView(TemplateView):
-    template_name = 'home.html'
-
-    def get_context_data(self):
-        context = super(HomeView, self).get_context_data()
-        print(context)
-        num = random.randint(0, 2000000)
-        some_list = [num, random.randint(0, 2000000), num]
-        context = {
-            'bool_var': True,
-            'num': num,
-            'some_list': some_list,
-        }
-        return context
-
-class AboutView(TemplateView):
-    template_name = 'about.html'
+class RestaurantListView(ListView):
+    queryset = RestaurantLocation.objects.all()
+    template_name = 'restaurants/restaurants_list.html'
 
 
-class ContactView(TemplateView):
-    template_name = 'contact.html'
+class FastRestaurantListView(ListView):
+    queryset = RestaurantLocation.objects.filter(category__iexact='FastFood')
+    template_name = 'restaurants/restaurants_list.html'
+
+
+class PizzaRestaurantListView(ListView):
+    queryset = RestaurantLocation.objects.filter(category__iexact='Pizza')
+    template_name = 'restaurants/restaurants_list.html'
