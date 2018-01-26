@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Restaurants || {{ block.super }} {% endblock title %}
+
+{% block content %}
+<h1> Restaurants List </h1>
+
+<ul>
+{% for obj in object_list %}
+    <li>{{ obj }} - {{ obj.name }} - {{ obj.location }} - {{ obj.category }} - {{ obj.timestamp }} - {{ obj.updated }}</li>
+{% endfor %}
+</ul>
+{% endblock content %}
+
