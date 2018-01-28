@@ -1,15 +1,28 @@
 {% extends "base.html" %}
 {% block title %}Welcome || {{ block.super }} {% endblock title %}
 {% block content %}
-<div class="jumbotron">
-  <h1 class="display-4 text-center">Herotek</h1>
-  <p class="lead text-center">Future Solutions.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron hvr-shutter-out-vertical">
+              <h1 class="display-4 text-center hvr-wobble-top">Herotek</h1>
+              <p class="lead text-center">Future Solutions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid-lg">
+    <div class="row">
+        <div class="col hvr-outline-out"><img class="img-fluid" src="http://via.placeholder.com/800x500"/></div>
+        <div class="col"><img class="img-fluid" src="http://via.placeholder.com/800x500"/></div>
+
+    </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card text-white bg-secondary mb-3 hvr-glow" style="max-width: 18rem;">
           <div class="card-header">Header</div>
           <div class="card-body">
             <h5 class="card-title">Secondary card title</h5>
@@ -18,7 +31,7 @@
         </div>
     </div>
    <div class="col">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card text-white bg-secondary mb-3 hvr-grow" style="max-width: 18rem;">
           <div class="card-header">Header</div>
           <div class="card-body">
             <h5 class="card-title">Secondary card title</h5>
@@ -27,7 +40,7 @@
         </div>
    </div>
       <div class="col">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card text-white bg-secondary mb-3 hvr-float-shadow" style="max-width: 18rem;">
           <div class="card-header">Header</div>
           <div class="card-body">
             <h5 class="card-title">Secondary card title</h5>
@@ -36,20 +49,4 @@
         </div>
    </div>
   </div>
-<h3>Hello LOL</h3>
-<p> this new shit {{html_var}} </p>
-<p>
-{% if bool_var %}
-random namber is --> {{ num }}
-{% endif %}
-</p>
-
-<p>
-{% for some_item in some_list %}
-    {% if some_item|divisibleby:"2" %}
-        Even number
-    {% endif %}
-    {{ some_item }}<br/>
-{% endfor %}
-</p>
 {% endblock content %}}
