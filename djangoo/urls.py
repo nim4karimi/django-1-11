@@ -1,3 +1,26 @@
+
+from django.conf.urls import url
+from django.contrib import admin
+from django.views.generic import TemplateView
+from restaurants.views import (
+    RestaurantListView,
+    RestaurantDetailView,
+    restaurant_createview,
+)
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
+    url(r'^restaurants/$', RestaurantListView.as_view()),
+    url(r'^restaurants/create/$', restaurant_createview),
+    url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view()),
+    #url(r'^restaurants/?P<slug>\w+)/$', RestaurantDetailView.as_view()),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
+]
+
+
+
+
 """djangoo URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,19 +36,3 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from django.contrib import admin
-from django.views.generic import TemplateView , ListView
-from restaurants.views import (
-    RestaurantListView,
-    RestaurantDetailView,
-)
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
-    url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
-    url(r'^restaurants/$', RestaurantListView.as_view()),
-    url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view()),
-   # url(r'^restaurants/?P<slug>\w+)/$', RestaurantDetailView.as_view()),
-    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
-]
